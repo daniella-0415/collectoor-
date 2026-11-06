@@ -1,0 +1,427 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #080914;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* MAIN CONTAINER */
+
+.game-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 10px auto 25px;
+  text-align: center;
+}
+
+/* HEADER */
+
+header {
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: #00f7ff;
+  font-size: 36px;
+  letter-spacing: 5px;
+  text-shadow: 0 0 15px #00f7ff;
+}
+
+header p {
+  color: #999bad;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* SCOREBOARD */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.stat {
+  background: #121426;
+  border: 1px solid #252944;
+  border-radius: 8px;
+  padding: 14px 5px;
+}
+
+.stat span {
+  display: block;
+  color: #9298ad;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.stat strong {
+  color: #00f7ff;
+  font-size: 22px;
+}
+
+/* GAME AREA */
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background: #090b19;
+  border: 1px solid #00f7ff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.15);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* OVERLAY */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(8, 9, 20, 0.97);
+  overflow-y: auto;
+}
+
+.overlay h2 {
+  color: #00f7ff;
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(0, 247, 255, 0.5);
+}
+
+.overlay > p {
+  max-width: 350px;
+  color: #b5b8c9;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* INSTRUCTION CARDS */
+
+.instructions-content {
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 11px 12px;
+  background: rgba(18, 20, 38, 0.9);
+  border: 1px solid #252944;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.instruction-item:hover {
+  border-color: #00f7ff;
+  background: #171a30;
+}
+
+.instruction-item strong {
+  color: #00f7ff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.instruction-item p {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #b5b8c9;
+}
+
+/* INSTRUCTION SYMBOLS */
+
+.life-display,
+.level-display {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00f7ff;
+  border: 1px solid #00f7ff;
+  border-radius: 5px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.sample {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.sample.star {
+  background: #ffe44d;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px #ffe44d;
+}
+
+.sample.bomb {
+  background: #ff287c;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff287c;
+}
+
+/* MOVEMENT INSTRUCTIONS */
+
+.how-to-move {
+  color: #9298ad;
+  font-size: 10px;
+  line-height: 1.8;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+/* BUTTONS */
+
+button {
+  padding: 12px 25px;
+  border: 1px solid #00f7ff;
+  border-radius: 5px;
+  background: transparent;
+  color: #00f7ff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #00f7ff;
+  color: #080914;
+  box-shadow: 0 0 15px #00f7ff;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 18px;
+}
+
+/* LEGEND */
+
+.legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 22px;
+  color: #b5b8c9;
+  font-size: 12px;
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* BOTTOM INSTRUCTIONS */
+
+.instructions {
+  margin-top: 20px;
+  color: #777d93;
+  font-size: 13px;
+}
+
+/* TABLETS */
+
+@media (max-width: 800px) {
+  body {
+    padding: 15px;
+  }
+
+  .game-container {
+    margin-top: 10px;
+  }
+
+  header h1 {
+    font-size: 30px;
+  }
+
+  .game-area {
+    height: 460px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  header {
+    margin-bottom: 18px;
+  }
+
+  header h1 {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  header p {
+    font-size: 12px;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .stat {
+    padding: 12px 3px;
+  }
+
+  .stat strong {
+    font-size: 17px;
+  }
+
+  .stat span {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .game-area {
+    height: 450px;
+  }
+
+  .overlay {
+    justify-content: flex-start;
+    padding: 20px 12px;
+  }
+
+  .overlay h2 {
+    font-size: 24px;
+    margin-top: 5px;
+  }
+
+  .instructions-content {
+    gap: 9px;
+  }
+
+  .instruction-item {
+    padding: 10px;
+  }
+
+  .instruction-item strong {
+    font-size: 11px;
+  }
+
+  .instruction-item p {
+    font-size: 11px;
+  }
+
+  .how-to-move {
+    font-size: 9px;
+  }
+
+  .controls {
+    gap: 10px;
+  }
+
+  button {
+    padding: 11px 20px;
+    font-size: 11px;
+  }
+
+  .legend {
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .instructions {
+    font-size: 11px;
+  }
+}
+
+/* SHORT SCREENS */
+
+@media (max-height: 800px) and (min-width: 601px) {
+  body {
+    padding-top: 12px;
+  }
+
+  .game-container {
+    margin-top: 0;
+  }
+
+  header {
+    margin-bottom: 15px;
+  }
+
+  header h1 {
+    font-size: 30px;
+  }
+
+  .game-area {
+    height: 420px;
+  }
+
+  .overlay {
+    padding: 12px;
+  }
+
+  .instructions-content {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .instruction-item {
+    padding: 9px 12px;
+  }
+
+  .overlay > p {
+    margin-bottom: 10px;
+  }
+
+  .how-to-move {
+    margin-bottom: 10px;
+  }
+
+  .legend {
+    margin-top: 15px;
+  }
+
+  .instructions {
+    margin-top: 12px;
+  }
+}

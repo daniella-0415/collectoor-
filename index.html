@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Collector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game-container">
+
+    <header>
+      <h1>STAR COLLECTOR</h1>
+      <p>Collect stars. Avoid bombs. Survive.</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span>SCORE</span>
+        <strong id="score">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>BEST</span>
+        <strong id="best">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>LEVEL</span>
+        <strong id="level">1</strong>
+      </div>
+
+      <div class="stat">
+        <span>LIVES</span>
+        <strong id="lives">3 / 3</strong>
+      </div>
+    </section>
+
+    <section class="game-area">
+
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- FIRST SCREEN / INSTRUCTIONS -->
+      <div class="overlay" id="overlay">
+
+        <h2 id="overlayTitle">HOW TO PLAY</h2>
+
+        <p id="overlayMessage">
+          Welcome to Neon Collector!
+        </p>
+
+        <div class="instructions-content">
+
+          <div class="instruction-item">
+            <span class="sample star"></span>
+            <div>
+              <strong>COLLECT STARS</strong>
+              <p>Each yellow star gives you 10 points.</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <span class="sample bomb"></span>
+            <div>
+              <strong>AVOID BOMBS</strong>
+              <p>Touching a red bomb costs you one life.</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <span class="life-display">3</span>
+            <div>
+              <strong>STAY ALIVE</strong>
+              <p>You have 3 lives. Don't lose them all!</p>
+            </div>
+          </div>
+
+          <div class="instruction-item">
+            <span class="level-display">1</span>
+            <div>
+              <strong>LEVEL UP</strong>
+              <p>Every 100 points takes you to the next level.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="how-to-move">
+          MOVE USING WASD OR ARROW KEYS.
+          <br>
+          ON MOBILE, DRAG YOUR PLAYER.
+        </p>
+
+        <button id="startButton">START GAME</button>
+
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="pauseButton">PAUSE</button>
+      <button id="restartButton">RESTART</button>
+    </section>
+
+    <section class="legend">
+      <div>
+        <span class="sample star"></span>
+        Star: +10 points
+      </div>
+
+      <div>
+        <span class="sample bomb"></span>
+        Bomb: -1 life
+      </div>
+    </section>
+
+    <p class="instructions">
+      Use WASD or arrow keys to move. On mobile, drag your player.
+    </p>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
